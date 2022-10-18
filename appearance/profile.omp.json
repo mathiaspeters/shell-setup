@@ -1,72 +1,72 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "blocks": 
-    [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
         {
-            "type": "prompt",
-            "alignment": "left",
-            "segments": 
-            [
-                {
-                    "type": "time",
-                    "style": "plain",
-                    "foreground": "white",
-                    "properties": {
-                    "time_format": "15:04:05",
-                    "prefix": "[",
-                    "postfix": "]"
-                    }
-                },
-                {
-                    "type": "os",
-                    "style": "powerline",
-                    "foreground": "cyan",
-                    "properties": {
-                        "windows": "W11",
-                        "wsl": "",
-                        "wsl_separator": "",
-                        "ubuntu": "WSL"
-                    }
-                },
-                {
-                    "type": "path",
-                    "style": "plain",
-                    "foreground": "cyan",
-                    "properties": {
-                        "style": "full"
-                    }
-                },
-                {
-                    "type": "git",
-                    "style": "plain",
-                    "foreground": "#F1502F",
-                    "properties": {
-                        "prefix": ":: ",
-                    "display_status": true,
-                    "branch_identical_icon": "\uF14A",
-                    "branch_gone_icon": "\u274E"
-                    }
-                }
-            ]
+          "foreground": "white",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "style": "plain",
+          "template": "[{{ .CurrentDate | date .Format }}]",
+          "type": "time"
         },
         {
-            "type": "prompt",
-            "alignment": "left",
-            "newline": true,
-            "segments": 
-            [
-                {
-                    "type": "exit",
-                    "style": "powerline",
-                    "foreground": "green",
-                    "properties": {
-                        "display_exit_code": false,
-                        "always_enabled": true,
-                        "error_color": "red",
-                        "prefix": "\u276F"
-                    }
-                }
-            ]
+          "foreground": "cyan",
+          "properties": {
+            "ubuntu": "WSL",
+            "windows": "W11",
+            "wsl": "",
+            "wsl_separator": ""
+          },
+          "style": "powerline",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+          "type": "os"
+        },
+        {
+          "foreground": "cyan",
+          "properties": {
+            "style": "full"
+          },
+          "style": "plain",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "#F1502F",
+          "properties": {
+            "branch_gone_icon": "\u274e",
+            "branch_identical_icon": "\uf14a",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": ":: {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
+          "type": "git"
         }
-    ]
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "green",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}red{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "powerline",
+          "template": "\u276f{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
+          "type": "exit"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 2
 }

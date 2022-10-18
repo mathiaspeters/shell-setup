@@ -1,6 +1,11 @@
 alias push="git push -u origin HEAD"
 alias pull="git pull --no-edit"
 
+rebase() {
+    git fetch
+    git rebase
+}
+
 commit() {
     git add .
     git commit -m "$1"
