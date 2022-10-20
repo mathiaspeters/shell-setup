@@ -61,7 +61,7 @@
             "always_enabled": true
           },
           "style": "powerline",
-          "template": "\u276f{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
+          "template": "\u276f",
           "type": "exit"
         }
       ],
