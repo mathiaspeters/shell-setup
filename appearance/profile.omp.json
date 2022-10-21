@@ -22,7 +22,7 @@
             "wsl_separator": ""
           },
           "style": "powerline",
-          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+          "template": " {{.Icon}} ",
           "type": "os"
         },
         {
@@ -61,7 +61,7 @@
             "always_enabled": true
           },
           "style": "powerline",
-          "template": "\u276f",
+          "template": "\u276f\u0020",
           "type": "exit"
         }
       ],
