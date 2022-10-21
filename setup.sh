@@ -1,3 +1,5 @@
+./install.sh
+
 pwd=`pwd` 
 
 posh1='eval "$(oh-my-posh init bash --config '
@@ -9,5 +11,3 @@ git1='. "'
 git2='/git-magic/bash.sh"'
 gitMagic=$git1$pwd$git2
 echo $gitMagic >> ~/.profile
-
-. ~/.profile

@@ -10,3 +10,4 @@ rm ~/.poshthemes/themes.zip
 cd fonts
 apt-get install fontconfig
 ./install.sh
+cd..
