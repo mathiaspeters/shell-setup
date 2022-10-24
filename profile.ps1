@@ -1,5 +1,3 @@
-Import-Module posh-git
-
 $ohMyPoshProfile = $PSScriptRoot + "\appearance\profile.omp.json"
 oh-my-posh init pwsh --config $ohMyPoshProfile | Invoke-Expression
 
