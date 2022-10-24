@@ -1,5 +1,3 @@
-Import-Module posh-git
-
 function Git-Push {
     git push -u origin HEAD
 }
