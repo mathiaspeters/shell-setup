@@ -6,6 +6,11 @@ function Git-Pull {
     git pull --no-edit
 }
 
+function Git-Rebase {
+    git fetch
+    git rebase
+}
+
 function Git-Commit {
     param (
         [parameter(Mandatory=$true)]
@@ -74,7 +79,16 @@ function Git-Update {
 
 Set-Alias -Name push -Value Git-Push
 Set-Alias -Name pull -Value Git-Pull
+Set-Alias -Name rebase -Value Git-Rebase
 Set-Alias -Name commit -Value Git-Commit
 Set-Alias -Name gcb -Value Git-NewBranch
 Set-Alias -Name gco -Value Git-Checkout 
 Set-Alias -Name gup -Value Git-Update
+
+function List-Profiles {
+    $PROFILE | Format-List -Force
+}
+
+function Edit-Profile {
+    code $PROFILE
+}
